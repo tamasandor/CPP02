@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:28 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/03 21:56:35 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/12 11:29:57 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ Fixed &Fixed::operator= (const Fixed &fixed)
 	return (*this);
 }
 
+std::ostream &operator<< (std::ostream & stream, const Fixed &fixed)
+{
+	std::cout << "Insertion operator called\n";
+	stream << fixed.toFloat();
+	return (stream);
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Deconstructor called\n";
@@ -53,6 +60,16 @@ int	Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called\n";
 	return (m_fixedPoint);
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ();
+}
+
+int		Fixed::toInt(void) const
+{
+	return ();
 }
 
 void	Fixed::setRawBits(int const raw)
