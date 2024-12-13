@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:28 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/13 13:46:59 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/13 16:43:50 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,71 @@ Fixed &Fixed::operator= (const Fixed &fixed)
 	if (this != &fixed)
 		this->m_fixedPoint = fixed.m_fixedPoint;
 	return (*this);
+}
+
+bool Fixed::operator> (const Fixed &other) 
+{
+	if (this->getRawBits() > other.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator< (const Fixed &other)
+{
+	if (this->getRawBits() < other.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator>= (const Fixed &other)
+{
+	if (*this == other || *this > other)
+		return (true);
+	else
+		return (false);
+}
+bool Fixed::operator<= (const Fixed &other)
+{
+	if (*this == other || *this < other)
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator== (const Fixed &other)
+{
+	return (this->getRawBits() == other.getRawBits());
+}
+
+bool Fixed::operator!= (const Fixed &other)
+{
+	return !(this->getRawBits() == other.getRawBits());
+}
+
+Fixed Fixed::operator+ (const Fixed &other)
+{
+	Fixed result(this->toFloat() + other.toFloat());
+	return (result);
+}
+
+Fixed Fixed::operator- (const Fixed &other)
+{
+	Fixed result(this->toFloat() - other.toFloat());
+	return (result);
+}
+
+Fixed Fixed::operator* (const Fixed &other)
+{
+	Fixed result(this->toFloat() * other.toFloat());
+	return (result);
+}
+
+Fixed Fixed::operator/ (const Fixed &other)
+{
+	Fixed result(this->toFloat() / other.toFloat());
+	return (result);
 }
 
 std::ostream &operator<< (std::ostream & stream, const Fixed &fixed)
