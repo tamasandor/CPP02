@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:25 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/06 20:30:32 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/13 11:27:35 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ public:
 	Fixed(const float floatpointint);
 	Fixed(const Fixed &fixed);
 	Fixed& operator= (const Fixed &fixed);
-	Fixed operator << (const Fixed &fixed);
 	~Fixed();
 	int	getRawBits( void )const;
 	void	setRawBits(int const raw);
@@ -34,5 +33,6 @@ public:
 	int		toInt(void)const;
 };
 
+std::ostream& operator<< (std::ostream &stream, const Fixed &fixed);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:28 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/12 11:29:57 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/13 13:22:56 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed()
 {
@@ -20,19 +21,21 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int integer)
 {
+	m_fixedPoint = (integer << m_bits);
 	std::cout << "Int constructor called\n";
-	(void)integer;
 }
 
 Fixed::Fixed(const float floatpointint)
 {
+	m_fixedPoint = (int)roundf((floatpointint * (int)(1 << m_bits)));
 	std::cout << "Float constructor called\n";
-	(void)floatpointint;
+	
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-	m_fixedPoint = fixed.getRawBits();
+	if (this != &fixed)
+		*this= fixed;
 	std::cout << "Copy constructor called\n";
 }
 
@@ -40,13 +43,13 @@ Fixed &Fixed::operator= (const Fixed &fixed)
 {
 	std::cout << "Copy assignment operator called\n";
 	if (this != &fixed)
-		this->m_fixedPoint = getRawBits();
+		this->m_fixedPoint = fixed.m_fixedPoint;
 	return (*this);
 }
 
 std::ostream &operator<< (std::ostream & stream, const Fixed &fixed)
 {
-	std::cout << "Insertion operator called\n";
+	// std::cout << "Insertion operator called\n";
 	stream << fixed.toFloat();
 	return (stream);
 }
@@ -64,12 +67,12 @@ int	Fixed::getRawBits(void) const
 
 float	Fixed::toFloat(void) const
 {
-	return ();
+	return ((float)m_fixedPoint / (1 << m_bits));
 }
 
 int		Fixed::toInt(void) const
 {
-	return ();
+	return (m_fixedPoint >> m_bits);
 }
 
 void	Fixed::setRawBits(int const raw)
