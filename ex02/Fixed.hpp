@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:25 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/13 16:59:03 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/15 00:30:23 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,27 @@ private:
 	int					m_fixedPoint;
 	static const int	m_bits = 8;
 public:
-	bool operator> (const Fixed &other);
-	bool operator< (const Fixed &other);
-	bool operator>= (const Fixed &other);
-	bool operator<= (const Fixed &other);
-	bool operator== (const Fixed &other);
-	bool operator!= (const Fixed &other);
-	Fixed operator+ (const Fixed &other);
-	Fixed operator- (const Fixed &other);
-	Fixed operator* (const Fixed &other);
-	Fixed operator/ (const Fixed &other);
+	bool operator> (const Fixed &other) const;
+	bool operator< (const Fixed &other) const;
+	bool operator>= (const Fixed &other) const;
+	bool operator<= (const Fixed &other) const;
+	bool operator== (const Fixed &other) const;
+	bool operator!= (const Fixed &other) const;
+	Fixed operator+ (const Fixed &other) const;
+	Fixed operator- (const Fixed &other) const;
+	Fixed operator* (const Fixed &other) const;
+	Fixed operator/ (const Fixed &other) const;
 	Fixed &operator++ (void);
-	Fixed operator++ (void);
+	/* If the overloaded operator has an int parameter, the operator is a postfix overload. */
+	Fixed operator++ (int);
+	Fixed &operator-- (void);
+	/* If the overloaded operator has an int parameter, the operator is a postfix overload. */
+	Fixed operator-- (int);
 	// Fixed &operator min (const Fixed &other);
+	static Fixed &min (Fixed &a, Fixed &b);
+	static const Fixed &min (const Fixed &a, const Fixed &b);
+	static Fixed &max (Fixed &a, Fixed &b);
+	static const Fixed &max (const Fixed &a, const Fixed &b);
 	Fixed();
 	Fixed(const int integer);
 	Fixed(const float floatpointint);
