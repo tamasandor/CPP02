@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:25 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/13 11:27:35 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/19 16:51:19 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Fixed
 {
 private:
 	int					m_fixedPoint;
-	static const int	m_bits = 8;
+	static const int	m_bits;
 public:
 	Fixed();
 	Fixed(const int integer);

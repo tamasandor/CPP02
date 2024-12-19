@@ -6,12 +6,14 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:28 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/15 00:30:58 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/19 16:46:03 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
+
+const int Fixed::m_bits = 8;
 
 Fixed::Fixed()
 {

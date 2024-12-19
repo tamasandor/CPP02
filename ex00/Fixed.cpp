@@ -6,11 +6,13 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:51:28 by atamas            #+#    #+#             */
-/*   Updated: 2024/12/03 17:58:25 by atamas           ###   ########.fr       */
+/*   Updated: 2024/12/19 16:51:35 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::m_bits = 8;
 
 Fixed::Fixed()
 {
